@@ -65,7 +65,7 @@ qaznlp/
 pip install qaznlp
 ```
 
-## 🧾 License
+## License
 
 IITU © 2025 by Aigerim Aitim
 
