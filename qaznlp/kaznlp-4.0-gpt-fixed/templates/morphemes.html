@@ -1,0 +1,29 @@
+
+<!-- templates/morphemes.html -->
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <title>Morpheme Analyzer</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .morpheme { display: inline-block; margin: 3px; padding: 5px 10px; border-radius: 5px; font-weight: bold; }
+        .root { background-color: #a2d2ff; }
+        .suffix { background-color: #b5ead7; }
+        .unknown { background-color: #ffdac1; }
+    </style>
+</head>
+<body>
+    <h2>Морфемдік талдау</h2>
+    <form method="post">
+        <input type="text" name="word" placeholder="Сөзді енгізіңіз" required>
+        <button type="submit">Анализ</button>
+    </form>
+    {% if parts %}
+        <h3>Нәтиже:</h3>
+        {% for item in parts %}
+            <span class="morpheme {{ item.type }}">{{ item.part }}</span>
+        {% endfor %}
+    {% endif %}
+</body>
+</html>

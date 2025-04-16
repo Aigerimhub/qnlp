@@ -1,0 +1,47 @@
+<!-- templates/dependency_tree.html -->
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <title>Dependency Tree Visualization</title>
+    <style>
+        svg { width: 100%; height: 300px; border: 1px solid #ccc; }
+        .word { font: 16px sans-serif; }
+        .arrow { stroke: black; stroke-width: 1.5; marker-end: url(#arrowhead); }
+        .label { font: 14px sans-serif; text-anchor: middle; fill: blue; }
+    </style>
+</head>
+<body>
+    <h2>Синтаксистік ағаш</h2>
+    <form method="post">
+        <input type="text" name="sentence" placeholder="Мысалы: Мен мектепке бардым." required>
+        <button type="submit">Көрсету</button>
+    </form>
+
+    {% if deps %}
+    <svg>
+        <defs>
+            <marker id="arrowhead" markerWidth="10" markerHeight="7" 
+                    refX="10" refY="3.5" orient="auto">
+                <polygon points="0 0, 10 3.5, 0 7" />
+            </marker>
+        </defs>
+
+        {% for word in deps %}
+            <text class="word" x="{{ loop.index0 * 100 + 50 }}" y="280">{{ word.text }}</text>
+        {% endfor %}
+
+        {% for word in deps %}
+            {% if word.head != 0 and word.head <= deps|length %}
+                <line class="arrow" 
+                      x1="{{ (word.head - 1) * 100 + 50 }}" y1="250" 
+                      x2="{{ loop.index0 * 100 + 50 }}" y2="200" />
+                <text class="label" x="{{ ((word.head - 1 + loop.index0) / 2 * 100 + 50) }}" y="190">
+                    {{ word.deprel }}
+                </text>
+            {% endif %}
+        {% endfor %}
+    </svg>
+    {% endif %}
+</body>
+</html>

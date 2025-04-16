@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+  <meta charset="UTF-8">
+  <title>KazNLP JSONL Annotator</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; }
+    .token { display: inline-block; padding: 6px 12px; margin: 4px; border: 1px solid #ccc; border-radius: 5px; }
+    .tag input, .deprel input { width: 60px; font-size: 0.9em; }
+    h4 { margin-bottom: 0.2em; }
+    .sent-block { margin-bottom: 1.5em; border-bottom: 1px solid #eee; padding-bottom: 1em; }
+    #saveBtn { margin-top: 20px; padding: 10px; font-size: 1em; }
+  </style>
+</head>
+<body>
+  <h2>KazNLP JSONL Annotator (Editable)</h2>
+  <input type="file" id="fileInput" accept=".jsonl">
+  <div id="output"></div>
+  <button id="saveBtn" style="display:none">💾 Download JSONL</button>
+
+  <script>
+    let corpusData = [];
+
+    document.getElementById("fileInput").addEventListener("change", function(e) {
+      const file = e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function(event) {
+        const lines = event.target.result.split('\n').filter(Boolean);
+        corpusData = lines.map(JSON.parse);
+        renderCorpus();
+        document.getElementById("saveBtn").style.display = "inline-block";
+      };
+      reader.readAsText(file);
+    });
+
+    function renderCorpus() {
+      const output = document.getElementById("output");
+      output.innerHTML = '';
+      corpusData.forEach((item, idx) => {
+        const div = document.createElement("div");
+        div.className = "sent-block";
+        div.innerHTML = `<h4>#${idx + 1}: ${item.text}</h4>`;
+        const tokLine = document.createElement("div");
+
+        item.tokens.forEach((tok, i) => {
+          const el = document.createElement("span");
+          el.className = "token";
+          el.innerHTML = `
+            ${tok}<br>
+            <span class='tag'>POS: <input value="${item.tags[i]}" onchange="updateField(${idx}, ${i}, 'tags', this.value)"></span><br>
+            <span class='deprel'>Dep: <input value="${item.deprel[i]}" onchange="updateField(${idx}, ${i}, 'deprel', this.value)"></span>
+          `;
+          tokLine.appendChild(el);
+        });
+        div.appendChild(tokLine);
+        output.appendChild(div);
+      });
+    }
+
+    function updateField(sentIdx, tokIdx, field, value) {
+      corpusData[sentIdx][field][tokIdx] = value;
+    }
+
+    document.getElementById("saveBtn").addEventListener("click", function() {
+      const blob = new Blob([corpusData.map(x => JSON.stringify(x)).join('\n')], { type: "text/plain" });
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = "annotated_corpus.jsonl";
+      link.click();
+    });
+  </script>
+</body>
+</html>

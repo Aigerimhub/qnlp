@@ -1,0 +1,36 @@
+<!-- templates/verb_form.html -->
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <title>Глагол формасын генерациялау</title>
+</head>
+<body>
+    <h2>Глагол формасын генерациялау</h2>
+    <form method="post">
+        Түбір (root): <input type="text" name="root" required><br>
+        Шақ (tense):
+        <select name="tense">
+            <option value="past">Өткен</option>
+            <option value="present">Осы</option>
+            <option value="future">Келер</option>
+        </select><br>
+        Жақ (person):
+        <select name="person">
+            <option value="1sg">Мен</option>
+            <option value="2sg">Сен</option>
+            <option value="3sg">Ол</option>
+            <option value="1pl">Біз</option>
+            <option value="2pl">Сендер</option>
+            <option value="3pl">Олар</option>
+        </select><br>
+        Болымсыздық (negative):
+        <input type="checkbox" name="negative" value="true"><br>
+        <button type="submit">Генерациялау</button>
+    </form>
+
+    {% if result %}
+        <h3>Нәтиже: {{ result }}</h3>
+    {% endif %}
+</body>
+</html>

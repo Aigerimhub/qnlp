@@ -1,0 +1,6 @@
+flask
+stanza
+transformers
+seqeval
+scikit-learn
+joblib

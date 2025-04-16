@@ -1,0 +1,33 @@
+<!-- templates/dependency.html -->
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <title>Dependency Parser</title>
+    <style>
+        .arrow { font-family: monospace; white-space: pre; }
+    </style>
+</head>
+<body>
+    <h2>Синтаксистік тәуелділік (Dependency Parsing)</h2>
+    <form method="post">
+        <input type="text" name="sentence" placeholder="Мысалы: Мен мектепке бардым." required>
+        <button type="submit">Анализ</button>
+    </form>
+
+    {% if deps %}
+        <h3>Нәтиже:</h3>
+        <table border="1">
+            <tr><th>ID</th><th>Token</th><th>Head</th><th>Relation</th></tr>
+            {% for item in deps %}
+                <tr>
+                    <td>{{ item.id }}</td>
+                    <td>{{ item.text }}</td>
+                    <td>{{ item.head }}</td>
+                    <td>{{ item.deprel }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+</body>
+</html>

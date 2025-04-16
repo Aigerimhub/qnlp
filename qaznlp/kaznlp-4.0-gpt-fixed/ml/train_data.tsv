@@ -1,0 +1,8 @@
+word	label
+кітап	NOUN
+кітаптар	NOUN+Number=Plur
+кітапқа	NOUN+Case=Dat
+кітаптардан	NOUN+Number=Plur+Case=Abl
+қала	NOUN
+қалалардан	NOUN+Number=Plur+Case=Abl
+мектепке	NOUN+Case=Dat

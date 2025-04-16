@@ -1,0 +1,24 @@
+<!-- templates/tag.html -->
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <title>POS Tagger</title>
+</head>
+<body>
+    <h2>Сөйлемді талдау</h2>
+    <form method="post">
+        <input type="text" name="sentence" placeholder="Мысалы: Мен мектепке бардым." required>
+        <button type="submit">Анализ</button>
+    </form>
+    {% if tags %}
+        <h3>Нәтиже:</h3>
+        <table border="1">
+            <tr><th>Token</th><th>Tag</th></tr>
+            {% for token, tag in tags %}
+                <tr><td>{{ token }}</td><td>{{ tag }}</td></tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+</body>
+</html>

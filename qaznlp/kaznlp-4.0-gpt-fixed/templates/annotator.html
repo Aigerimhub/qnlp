@@ -1,0 +1,46 @@
+<!-- templates/annotator.html -->
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <title>Corpus Annotator</title>
+    <style>
+        .bad-tag { background-color: #fdd; }
+        table td input { width: 100px; }
+    </style>
+</head>
+<body>
+    <h2>Corpus Annotator (JSONL Viewer)</h2>
+    <form method="get" action="/annotator">
+        <label for="index">Index:</label>
+        <input type="number" name="index" min="0" required value="{{ index }}">
+        <button type="submit">Load</button>
+        <a href="/annotator?index={{ index | int - 1 }}">← Prev</a> |
+        <a href="/annotator?index={{ index | int + 1 }}">Next →</a>
+        <a href="/export_tsv" target="_blank">📥 Export to TSV</a>
+    </form>
+
+    {% if sample %}
+        <h3>Text:</h3>
+        <p>{{ sample.text }}</p>
+        <form method="post">
+            <input type="hidden" name="index" value="{{ index }}">
+            <input type="hidden" name="next" value="1">
+            <table border="1">
+                <tr><th>Token</th><th>Tag</th><th>Morph</th><th>Deprel</th></tr>
+                {% for i in range(sample.tokens | length) %}
+                <tr>
+                    <td>{{ sample.tokens[i] }}</td>
+                    <td><input name="tags" value="{{ sample.tags[i] }}" maxlength="6"
+                        class="{{ 'bad-tag' if sample.tags[i] not in ['NOUN','VERB','PRON','ADJ','PUNCT','ADV','ADP','CCONJ','DET','NUM','PART','PROPN','SCONJ','INTJ','SYM','X'] else '' }}"></td>
+                    <td><input name="morph" value="{{ sample.morph[i] }}"></td>
+                    <td><input name="deprel" value="{{ sample.deprel[i] }}"></td>
+                </tr>
+                {% endfor %}
+            </table>
+            <button type="submit">Save</button>
+            <button type="submit" name="goto_next" value="1">Save & Next →</button>
+        </form>
+    {% endif %}
+</body>
+</html>
