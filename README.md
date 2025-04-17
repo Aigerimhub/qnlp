@@ -1,6 +1,6 @@
-# QazNLP 4.0 – Full Kazakh NLP Suite
+# QNLP 4.0 – Full Kazakh NLP Suite
 
-**QazNLP 4.0** is a comprehensive and modular library for automatic processing of the Kazakh language. It combines modern transformer-based models (KazBERT, GPT), classic rule-based morphological processing, and production-ready deployment tools (API, CLI, ONNX).
+**QNLP 4.0** is a comprehensive and modular library for automatic processing of the Kazakh language. It combines modern transformer-based models (KazBERT, GPT), classic rule-based morphological processing, and production-ready deployment tools (API, CLI, ONNX).
 
 ---
 
@@ -71,4 +71,4 @@ IITU © 2025 by Aigerim Aitim
 
 ---
 
-> For academic use, cite as: *QazNLP 4.0: An Open-Source Suite for Kazakh Language Processing (2025)*
+> For academic use, cite as: *QNLP 4.0: An Open-Source Suite for Kazakh Language Processing (2025)*
