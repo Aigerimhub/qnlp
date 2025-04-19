@@ -25,7 +25,6 @@
 |----------------|---------------------------|--------------------------------|
 | `kazner-crf`    | KazBERT + BiLSTM + CRF   | Named Entity Recognition       |
 | `kazpos-crf`    | KazBERT + BiLSTM + CRF   | Part-of-Speech Tagging         |
-| `kazgpt-mini`   | GPT2 (fine-tuned)        | Kazakh Text Generation         |
 | `kazqa`         | KazBERT + QA Head        | Question Answering             |
 | `kazsrl`        | KazBERT + Classifier     | Semantic Role Labeling         |
 | `kazcoref`      | Rule-based + Span Linking| Coreference Resolution         |
