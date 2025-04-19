@@ -7,7 +7,6 @@
 ## Features
 
 - **KazBERT + BiLSTM + CRF**: High-accuracy POS and NER tagging
-- **KazGPT**: Kazakh GPT-based text generation
 - **QA Model**: SQuAD-style question answering
 - **SRL**: Semantic role labeling using transformer models
 - **Coreference Resolution**: Rule-based and model-enhanced
