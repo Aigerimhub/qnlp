@@ -1,0 +1,8 @@
+item,count,notes
+documents,REPLACE_ME,Verified unique source documents
+clause_segments,REPLACE_ME,Clause-level retrieval units
+queries_or_cases,REPLACE_ME,Natural-language queries or case descriptions
+query_evidence_links,REPLACE_ME,Annotated query-to-evidence associations
+eligible_cases,REPLACE_ME,Final label count
+not_eligible_cases,REPLACE_ME,Final label count
+needs_review_cases,REPLACE_ME,Final label count

@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Legal Evidence Selection Record",
+  "type": "object",
+  "required": [
+    "query_id",
+    "query",
+    "evidence_ids",
+    "evidence_texts",
+    "label",
+    "source_document_ids",
+    "split",
+    "is_synthetic"
+  ],
+  "properties": {
+    "query_id": {
+      "type": "string"
+    },
+    "query": {
+      "type": "string"
+    },
+    "evidence_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "evidence_texts": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "label": {
+      "type": "string",
+      "enum": [
+        "Eligible",
+        "Not Eligible",
+        "Needs Review"
+      ]
+    },
+    "source_document_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "split": {
+      "type": "string",
+      "enum": [
+        "train",
+        "validation",
+        "test",
+        "sample"
+      ]
+    },
+    "is_synthetic": {
+      "type": "boolean"
+    }
+  }
+}

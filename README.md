@@ -1,72 +1,35 @@
-# QNLP – Full Kazakh NLP Suite
+# Legal Evidence Dataset Documentation Package
 
-**QNLP** is a comprehensive and modular library for automatic processing of the Kazakh language. It combines modern transformer-based models, classic rule-based morphological processing, and production-ready deployment tools (API, CLI, ONNX).
+This folder is a publication-ready **template** for documenting the dataset used in the article:
 
----
+**MPNet-Based Semantic Retrieval for Legal Evidence Selection: A Set Cover and Subset Selection Perspective**
 
-## Features
+## Important
 
-- **KazBERT + BiLSTM + CRF**: High-accuracy POS and NER tagging
-- **QA Model**: SQuAD-style question answering
-- **SRL**: Semantic role labeling using transformer models
-- **Coreference Resolution**: Rule-based and model-enhanced
-- **Morphology**: Lemmatizer, generator, morpheme analyzer
-- **Tokenizer**: BPE, SentencePiece support
-- **ONNX**: Export models for production
-- **API**: Flask + Swagger + CLI support
-- **Augmentation**: NER-specific synthetic data generator
-- **Unit Testing**: All modules with test coverage
+Before uploading this folder publicly:
 
----
+1. Replace every `REPLACE_ME` and `TODO`.
+2. Replace the synthetic examples in `sample_data.jsonl` with real anonymized representative records.
+3. Enter verified corpus counts in `corpus_statistics.csv` and `split_statistics.csv`.
+4. Add only real source URLs to `source_manifest.csv`.
+5. Confirm that document reuse and redistribution conditions permit publication.
+6. Run `python validate_release.py`.
 
-## Models
+## Included files
 
-| Model           | Architecture             | Description                    |
-|----------------|---------------------------|--------------------------------|
-| `kazner-crf`    | KazBERT + BiLSTM + CRF   | Named Entity Recognition       |
-| `kazpos-crf`    | KazBERT + BiLSTM + CRF   | Part-of-Speech Tagging         |
-| `kazqa`         | KazBERT + QA Head        | Question Answering             |
-| `kazsrl`        | KazBERT + Classifier     | Semantic Role Labeling         |
-| `kazcoref`      | Rule-based + Span Linking| Coreference Resolution         |
+- `DATASET_CARD.md` — dataset scope, motivation, provenance, annotation, limitations, and licensing.
+- `source_manifest.csv` — source-document metadata.
+- `corpus_statistics.csv` — verified corpus-level counts.
+- `split_statistics.csv` — train, validation, and test split statistics.
+- `sample_data.jsonl` — representative records; current entries are synthetic placeholders.
+- `annotation_guidelines.md` — label definitions and evidence annotation procedure.
+- `schema.json` — machine-readable record schema.
+- `CITATION.cff` — repository citation metadata.
+- `REVIEWER_RESPONSE.md` — draft response to Reviewer C.
+- `MANUSCRIPT_TEXT.md` — replacement text for the manuscript.
+- `validate_release.py` — checks unresolved placeholders.
 
----
+## Public resources
 
-## Directory Structure
-
-```
-qaznlp/
-├── models/
-├── morphology/
-├── tokenizer/
-├── training/
-├── augment/
-├── server/
-├── scripts/
-├── data/
-├── tests/
-└── notebooks/
-```
-
----
-
-## Demo & Testing
-
-- `test_all.py`: Run all tests
-- `app.py`: REST API with Swagger UI
-- `export_onnx.py`: Export all models to ONNX
-
----
-
-## Installation
-
-```bash
-pip install qaznlp
-```
-
-## License
-
-IITU © 2025 by Aigerim Aitim
-
----
-
-> For academic use, cite as: *QNLP 4.0: An Open-Source Suite for Kazakh Language Processing (2025)*
+- Model and code artifacts: https://huggingface.co/irinaqqq/lexir
+- Supporting software repository: https://github.com/Aigerimhub/qnlp
